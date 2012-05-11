@@ -21,7 +21,7 @@ if (xmlhttp.readyState==4)
   if (xmlhttp.status==200)
     {
 		var resp = eval("(" + xmlhttp.responseText + ")");
-		taux=resp.rhs.substring(0,10);
+		taux=resp.rhs.substring(0,6);
 		chrome.browserAction.setBadgeText({text:String(taux)});
     }
   else
