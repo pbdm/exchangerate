@@ -7,21 +7,7 @@ var taux;
 
 function request(){
 chrome.browserAction.setTitle({title:localStorage["fromCurrency"]+"-"+localStorage["toCurrency"]});
-switch (localStorage["mark"])
-	{
-	case "1":
-	var urlsite="http://www.webservicex.net/CurrencyConvertor.asmx/ConversionRate";
-	url=urlsite+"?FromCurrency="+localStorage["fromCurrency"]+"&ToCurrency="+localStorage["toCurrency"];
-	break;
-	case "2":
-	url="http://api.liqwei.com/currency/?exchange="+localStorage["fromCurrency"]+"|"+localStorage["toCurrency"]+"&count=1";
-	break;
-	case "3":
-	url="http://xurrency.com/api/"+localStorage["fromCurrency"].toLowerCase()+"/"+localStorage["toCurrency"].toLowerCase()+"/1"; 
-	break;
-	default:
-	url="http://pbdmfr.free.fr/"+localStorage["fromCurrency"]+"_"+localStorage["toCurrency"]+".xml";
-	}
+url="http://api.liqwei.com/currency/?exchange="+localStorage["fromCurrency"]+"|"+localStorage["toCurrency"]+"&count=1";	
 xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange=state_Change;
 xmlhttp.open("GET",url,true);
@@ -34,20 +20,7 @@ if (xmlhttp.readyState==4)
   {
   if (xmlhttp.status==200)
     {
-		switch (localStorage["typeReponse"])
-		{
-		case "txt"://from text
 		taux=xmlhttp.responseText;
-		break;
-		case "jso"://from json
-		var resp = JSON.parse(xmlhttp.responseText);
-		taux=resp.value;
-		break;
-		default://peut-etre from xml
-		var elements = xmlhttp.responseXML.getElementsByTagName("double");
-		taux=elements[0].childNodes[0].nodeValue;
-		}
-		
 		chrome.browserAction.setBadgeText({text:String(taux)});
     }
   else
@@ -60,16 +33,14 @@ else
 	chrome.browserAction.setBadgeText({text:String("E"+xmlhttp.readyState)}); 
 }
 //first time
-if(localStorage["mark"]==null){
-	localStorage["mark"]="2";
-	localStorage["typeReponse"]="txt";
-}
 if(localStorage["fromCurrency"]==null){
 	localStorage["fromCurrency"]="EUR";
 	localStorage["toCurrency"]="CNY";
 	}
 request();//first time	  
-window.setInterval(request(), 600000);
+
+window.setInterval("request()", 600000);
+
 </script>
 </head>
 </html>

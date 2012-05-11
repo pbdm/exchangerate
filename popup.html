@@ -1,29 +1,122 @@
 <html>
 <head>
-<script>
+<script type="text/javascript">
 var bgpg = chrome.extension.getBackgroundPage();
-var x=document.getElementsByName("taux");
+var currency=["CNY","EUR","USD","AED","ANG","ARS","AUD","BDT",
+"BGN",
+"BHD",
+"BND",
+"BOB",
+"BRL",
+"BWP",
+"CAD",
+"CHF",
+"CLP",
+"CNY",
+"COP",
+"CRC",
+"CZK",
+"DKK",
+"DOP",
+"DZD",
+"EEK",
+"EGP",
+"EUR",
+"FJD",
+"GBP",
+"HKD",
+"HNL",
+"HRK",
+"HUF",
+"IDR",
+"ILS",
+"INR",
+"JMD",
+"JOD",
+"JPY",
+"KES",
+"KRW",
+"KWD",
+"KYD",
+"KZT",
+"LBP",
+"LKR",
+"LTL",
+"LVL",
+"MAD",
+"MDL",
+"MKD",
+"MUR",
+"MVR",
+"MXN",
+"MYR",
+"NAD",
+"NGN",
+"NIO",
+"NOK",
+"NPR",
+"NZD",
+"OMR",
+"PEN",
+"PGK",
+"PHP",
+"PKR",
+"PLN",
+"PYG",
+"QAR",
+"RON",
+"RSD",
+"RUB",
+"SAR",
+"SCR",
+"SEK",
+"SGD",
+"SKK",
+"SLL",
+"SVC",
+"THB",
+"TND",
+"TRY",
+"TTD",
+"TWD",
+"TZS",
+"UAH",
+"UGX",
+"USD",
+"UYU",
+"UZS",
+"VEF",
+"VND",
+"XOF",
+"YER",
+"ZAR",
+"ZMK"];
 document.write(localStorage["fromCurrency"]+"-"+localStorage["toCurrency"]+":<br />"+bgpg.taux);
-function check(){
-for(i=0;i<x.length;i++)
-	if(x[i].value==localStorage["fromCurrency"]+"-"+localStorage["toCurrency"])
-		x[i].checked=true;
-}
 
 function click(){
-for(i=0;i<x.length;i++)
-	if(window.x[i].checked){
-		localStorage["fromCurrency"]=window.x[i].value.substring(0,3);
-		localStorage["toCurrency"]=window.x[i].value.substring(4,7);
-		bgpg.request();
-	}
-window.close();
+	from=document.getElementById("fromCurrency");
+	to=document.getElementById("toCurrency");
+	localStorage["fromCurrency"]=from.value;
+	localStorage["toCurrency"]=to.value;
+	window.close();
+	bgpg.request();	
+	
+}
+function insert(ft){
+document.write("<select id="+ft+">");
+for(i=0;i<currency.length;i++)
+	if(localStorage[ft]==currency[i])//set default value
+		document.write("<option value="+currency[i]+" selected=true>"+currency[i]+"</option>");
+	else
+		document.write("<option value="+currency[i]+">"+currency[i]+"</option>");
+document.write("</select>");
+
 }
 </script>
 <style>
 body {
-  width:150px;
-
+	width:150px;
+	height:580px;
 	background:#cccccc;
 	text-align:center;
 	font-size:15px;
@@ -33,25 +126,22 @@ input[type="submit"]{
 	font-family: "Microsoft YaHei";
 	font-size:15px;
 }
+
 </style>
 </head>
-<body onload=check()>
+<body>
 <hr />
 <form onsubmit=click()>
-<input type="radio" name="taux" value="EUR-CNY" /> EUR-CNY
+From --- to
 <br />
-<input type="radio" name="taux" value="CNY-EUR" /> CNY-EUR
-<br />
-<input type="radio" name="taux" value="USD-CNY" /> USD-CNY
-<br />
-<input type="radio" name="taux" value="CNY-USD" /> CNY-USD
-<br />
-<input type="radio" name="taux" value="EUR-USD" /> EUR-USD
-<br />
-<input type="radio" name="taux" value="USD-EUR" /> USD-EUR
-<br />
-<input type="submit" value="submit" />
+<script type="text/javascript">
+
+insert("fromCurrency");
+insert("toCurrency")
+</script>
+<input type="submit" value="确定" />
 </form>
+<a href="unit.html">货币单位编码查询</a>
 </body>
 
 </html>
