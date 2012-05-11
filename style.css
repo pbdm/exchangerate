@@ -1,0 +1,21 @@
+body {
+	margin:8px;
+	width:150px;
+	height:200px;
+	text-align:center;
+	font-size:15px;
+	font-family: "Microsoft YaHei";
+}
+input[type="submit"]{
+	font-family: "Microsoft YaHei";
+	font-size:15px;
+}
+#unit{
+	font-size:12px;	
+}
+#header{
+	margin:8px;
+}
+#list{
+	margin:8px;
+}

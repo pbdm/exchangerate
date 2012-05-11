@@ -6,12 +6,12 @@ var url;
 var taux;
 
 function request(){
-chrome.browserAction.setTitle({title:localStorage["fromCurrency"]+"-"+localStorage["toCurrency"]});
-url="https://www.google.com/ig/calculator?q=1"+localStorage["fromCurrency"]+"=?"+localStorage["toCurrency"];
-xmlhttp = new XMLHttpRequest();
-xmlhttp.onreadystatechange=state_Change;
-xmlhttp.open("GET",url,true);
-xmlhttp.send();
+	chrome.browserAction.setTitle({title:localStorage["fromCurrency"]+"-"+localStorage["toCurrency"]});
+	url="https://www.google.com/ig/calculator?q=1"+localStorage["fromCurrency"]+"=?"+localStorage["toCurrency"];
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange=state_Change;
+	xmlhttp.open("GET",url,true);
+	xmlhttp.send();
 }
 
 function state_Change()
@@ -21,7 +21,7 @@ if (xmlhttp.readyState==4)
   if (xmlhttp.status==200)
     {
 		var resp = eval("(" + xmlhttp.responseText + ")");
-		taux=resp.rhs.substring(0,10);;
+		taux=resp.rhs.substring(0,10);
 		chrome.browserAction.setBadgeText({text:String(taux)});
     }
   else
@@ -39,7 +39,6 @@ if(localStorage["fromCurrency"]==null){
 	localStorage["toCurrency"]="CNY";
 	}
 request();//first time	  
-
 window.setInterval("request()", 600000);
 
 </script>
