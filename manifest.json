@@ -1,0 +1,16 @@
+{
+  "name": "Exchange rate",
+  "version": "2011.8.26.0",
+  "background_page": "background.html",
+  "permissions": [
+    "tabs", "http://*/*", "https://*/*"
+  ],
+ // "options_page": "options.html",
+  "browser_action": {
+    //"default_title": "EUR-CNY",
+	"default_popup": "popup.html",
+	"default_icon": "icon.jpg"
+	 
+      
+  }
+}

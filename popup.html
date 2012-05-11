@@ -1,0 +1,57 @@
+<html>
+<head>
+<script>
+var bgpg = chrome.extension.getBackgroundPage();
+var x=document.getElementsByName("taux");
+document.write(localStorage["fromCurrency"]+"-"+localStorage["toCurrency"]+":<br />"+bgpg.taux);
+function check(){
+for(i=0;i<x.length;i++)
+	if(x[i].value==localStorage["fromCurrency"]+"-"+localStorage["toCurrency"])
+		x[i].checked=true;
+}
+
+function click(){
+for(i=0;i<x.length;i++)
+	if(window.x[i].checked){
+		localStorage["fromCurrency"]=window.x[i].value.substring(0,3);
+		localStorage["toCurrency"]=window.x[i].value.substring(4,7);
+		bgpg.request();
+	}
+window.close();
+}
+</script>
+<style>
+body {
+  width:150px;
+
+	background:#cccccc;
+	text-align:center;
+	font-size:15px;
+	font-family: "Microsoft YaHei";
+}
+input[type="submit"]{
+	font-family: "Microsoft YaHei";
+	font-size:15px;
+}
+</style>
+</head>
+<body onload=check()>
+<hr />
+<form onsubmit=click()>
+<input type="radio" name="taux" value="EUR-CNY" /> EUR-CNY
+<br />
+<input type="radio" name="taux" value="CNY-EUR" /> CNY-EUR
+<br />
+<input type="radio" name="taux" value="USD-CNY" /> USD-CNY
+<br />
+<input type="radio" name="taux" value="CNY-USD" /> CNY-USD
+<br />
+<input type="radio" name="taux" value="EUR-USD" /> EUR-USD
+<br />
+<input type="radio" name="taux" value="USD-EUR" /> USD-EUR
+<br />
+<input type="submit" value="submit" />
+</form>
+</body>
+
+</html>
