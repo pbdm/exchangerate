@@ -1,0 +1,15 @@
+{
+	"submit":{
+		"message":"submit",
+		"description":"submit."
+	},
+	"search_taux":{
+		"message":"Inquiry currency trend",
+		"description":"Inquiry currency trend."
+	},
+
+	"search_code":{
+		"message":"Inquiry currency code",
+		"description":"Inquiry currency code."
+	}
+}

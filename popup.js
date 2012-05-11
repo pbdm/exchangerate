@@ -1,5 +1,6 @@
 var bgpg = chrome.extension.getBackgroundPage();
 var from,to;
+var name_liste;//name of ficher du list du code devise
 var currency=["CNY","EUR","USD","AED","ANG","ARS","AUD","BDT",
 "BGN",
 "BHD",
@@ -104,7 +105,19 @@ function subm(){
 }
 
 function curre(){
-	window.open("http://www.google.com.hk/finance?&q=CURRENCY:"+localStorage["fromCurrency"]+localStorage["toCurrency"]+"&gl=cn");
+	switch (window.navigator.language)
+	{
+		case "zh-CN":
+			window.open("http://www.google.com.hk/finance?&q=CURRENCY:"+localStorage["fromCurrency"]+localStorage["toCurrency"]+"&gl=cn");
+			break;
+		case "zh-TW":
+			window.open("http://www.google.com.hk/finance?&q=CURRENCY:"+localStorage["fromCurrency"]+localStorage["toCurrency"]);
+			break;
+		default:
+			window.open("http://www.google.com/finance?&q=CURRENCY:"+localStorage["fromCurrency"]+localStorage["toCurrency"]);
+	}
+	
+	
 	bgpg.request();	
 }
 
@@ -120,8 +133,14 @@ to=document.getElementById("toCurrency");
 from.value=localStorage["fromCurrency"];
 to.value=localStorage["toCurrency"];
 
-document.write("<input type=\"submit\" value=\"确定\" /></form></div>");
+document.write("<input type=\"submit\" value=\""+chrome.i18n.getMessage("submit")+"\" /></form></div>");
 document.write("<hr />");
-document.write("<input type=\"button\" value=\"查询汇率走势图\" onclick=curre()>");
+document.write("<input type=\"button\" value=\""+chrome.i18n.getMessage("search_taux")+"\" onclick=curre()>");
 document.write("<hr />");
-//document.write("<a href=\"http://www.google.com.hk/finance?&q=CURRENCY:"+localStorage["fromCurrency"]+localStorage["toCurrency"]+"&gl=cn\" target=\"_blank\">查询汇率走势图</a><br />");
+
+if(window.navigator.language.substring(0,2)=="zh"||window.navigator.language.substring(0,2)=="fr")
+	name_liste=window.navigator.language.substring(0,2);
+else
+	name_liste="en";
+	
+document.write("<a href=\"code_"+name_liste+".html\" target=\"_blank\">"+chrome.i18n.getMessage("search_code")+"</a>");

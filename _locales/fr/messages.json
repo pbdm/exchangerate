@@ -1,0 +1,15 @@
+{
+	"submit":{
+		"message":"OK",
+		"description":"OK."
+	},
+	"search_taux":{
+		"message":"La tendance de devise",
+		"description":"La tendance de devise."
+	},
+
+	"search_code":{
+		"message":"Le code de devise",
+		"description":"Le code de devise."
+	}
+}

@@ -1,0 +1,15 @@
+﻿{
+	"submit":{
+		"message":"确定",
+		"description":"确定."
+	},
+	"search_taux":{
+		"message":"查询汇率走势图",
+		"description":"查询汇率走势图."
+	},
+
+	"search_code":{
+		"message":"货币单位编码查询",
+		"description":"货币单位编码查询."
+	}
+}

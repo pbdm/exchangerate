@@ -1,10 +1,11 @@
 {
   "name": "Exchange rate",
-  "version": "2011.8.30.2",
+  "version": "2011.9.4.0",
   "background_page": "background.html",
   "permissions": [
      "https://www.google.com/"
   ],
+  "default_locale":"en",
   "browser_action": {
    
 	"default_popup": "popup.html",
