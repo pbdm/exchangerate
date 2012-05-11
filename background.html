@@ -7,7 +7,7 @@ var taux;
 
 function request(){
 chrome.browserAction.setTitle({title:localStorage["fromCurrency"]+"-"+localStorage["toCurrency"]});
-url="http://api.liqwei.com/currency/?exchange="+localStorage["fromCurrency"]+"|"+localStorage["toCurrency"]+"&count=1";	
+url="https://www.google.com/ig/calculator?q=1"+localStorage["fromCurrency"]+"=?"+localStorage["toCurrency"];
 xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange=state_Change;
 xmlhttp.open("GET",url,true);
@@ -20,7 +20,8 @@ if (xmlhttp.readyState==4)
   {
   if (xmlhttp.status==200)
     {
-		taux=xmlhttp.responseText;
+		var resp = eval("(" + xmlhttp.responseText + ")");
+		taux=resp.rhs.substring(0,10);;
 		chrome.browserAction.setBadgeText({text:String(taux)});
     }
   else

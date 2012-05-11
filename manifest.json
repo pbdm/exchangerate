@@ -1,6 +1,6 @@
 {
   "name": "Exchange rate",
-  "version": "2011.8.29.0",
+  "version": "2011.8.30.0",
   "background_page": "background.html",
   "permissions": [
      "http://*/*", "https://*/*"
