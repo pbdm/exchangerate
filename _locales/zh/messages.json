@@ -11,5 +11,10 @@
 	"search_code":{
 		"message":"货币单位编码查询",
 		"description":"货币单位编码查询."
+	},
+
+	"url_code":{
+		"message":"code_zh.html",
+		"description":"code_zh.html"
 	}
 }

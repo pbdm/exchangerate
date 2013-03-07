@@ -11,5 +11,10 @@
 	"search_code":{
 		"message":"Inquiry currency code",
 		"description":"Inquiry currency code."
+	},
+
+	"url_code":{
+		"message":"code_en.html",
+		"description":"code_en.html"
 	}
 }

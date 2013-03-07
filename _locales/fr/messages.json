@@ -11,5 +11,10 @@
 	"search_code":{
 		"message":"Le code de devise",
 		"description":"Le code de devise."
+	},
+
+	"url_code":{
+		"message":"code_fr.html",
+		"description":"code_fr.html"
 	}
 }

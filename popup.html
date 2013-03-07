@@ -1,8 +1,23 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="style.css"/>
+<script type="text/javascript" src="jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="popup.js"></script>
 </head>
-
-
+<body>
+	<div id="header">
+		<span id='taux'></span>
+	</div>
+	<hr/>
+	<div id="list">
+		<form>
+			<select id="fromCurrency"></select>-<select id="toCurrency"></select>
+			<input id='confirm' type="submit">
+		</form>
+	</div>
+	<hr/>
+	<input id='search_taux' type="button">
+	<hr/>
+	<a id='search_code' href="code_zh.html" target="_blank"></a>
+</body>
 </html>
