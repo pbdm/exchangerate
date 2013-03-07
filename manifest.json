@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
   "name": "Exchange rate",
-  "version": "2011.9.4.1",
+  "version": "2013.3.7.0",
   "permissions": [
      "https://www.google.com/"
   ],
