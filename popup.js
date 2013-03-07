@@ -32,7 +32,7 @@ function init(){
 	$("#to").html('to');
 	$("#taux").html('taux');
 	request();
-	//window.setInterval("request()", 600);
+	window.setInterval("request()", 600000);
 }
 
 //function pour mis a jour le currency
