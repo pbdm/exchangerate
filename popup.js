@@ -7,7 +7,7 @@ function init(){
 		localStorage["toCurrency"]="CNY";
  	}
 	//init les different currency
-	for(i=0;i<currency.length;i++){
+	for( i = 0; i < currency.length; i++){
 		$("#fromCurrency").append("<option value="+currency[i]+">"+currency[i]+"</option>");
 		$("#toCurrency").append("<option value="+currency[i]+">"+currency[i]+"</option>");
 	}
@@ -46,7 +46,7 @@ function changeCurrency(){
 function request(){
 	chrome.browserAction.setTitle({title:localStorage["fromCurrency"]+"-"+localStorage["toCurrency"]});
 	$.ajax({
-		url:"https://www.google.com/ig/calculator?q=1"+localStorage["fromCurrency"]+"=?"+localStorage["toCurrency"],
+		url:"http://rate-exchange.appspot.com/currency?from=" + localStorage["fromCurrency"] + "&to=" + localStorage["toCurrency"],
 		async:true,
 		type:'GET',
 		success: su,
@@ -55,8 +55,7 @@ function request(){
 }
 
 function su(xhr){
-	var resp = eval("(" + xhr + ")");
-	taux=resp.rhs.substring(0,6);
+	taux = xhr.rate;
 	chrome.browserAction.setBadgeText({text:String(taux)});
 	$("#taux").html(taux);
 }
